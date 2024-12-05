@@ -45,18 +45,18 @@ from (
       gs.visitor_team_score as visitor_score,
       g.game_date
     from
-      `develoment-catalog`.`dbt-schema`.zzz_games as g,
-      `develoment-catalog`.`dbt-schema`.zzz_game_opponents as go,
-      `develoment-catalog`.`dbt-schema`.zzz_game_scores as gs
+      `development-catalog`.`dbt-schema`.zzz_games as g,
+      `development-catalog`.`dbt-schema`.zzz_game_opponents as go,
+      `development-catalog`.`dbt-schema`.zzz_game_scores as gs
     where
       g.game_id = go.game_id and
       g.game_id = gs.game_id
   ) as all_ids,
-    `develoment-catalog`.`dbt-schema`.zzz_teams as t
+    `development-catalog`.`dbt-schema`.zzz_teams as t
   where
     all_ids.home_team_id = t.team_id
 ) as visitor_ids,
-  `develoment-catalog`.`dbt-schema`.zzz_teams as t
+  `development-catalog`.`dbt-schema`.zzz_teams as t
 where
   visitor_ids.visitor_team_id = t.team_id
 order by game_date desc
